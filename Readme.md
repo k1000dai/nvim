@@ -1,5 +1,9 @@
 # vim config for kohei 
 ## setup
+0. install build tools
+```
+apt install -y build-essential cmake gettext
+```
 1. install neovim
 ```
 git clone https://github.com/neovim/neovim \
@@ -10,6 +14,8 @@ git clone https://github.com/neovim/neovim \
 2. edit .bashrc
 ```
 echo "export XDG_CONFIG_HOME=${HOME}/.config" >> ~/.bashrc
+echo "alias vim=nvim" >> ~/.bashrc
+source ~/.bashrc
 ```
 3. git clone this repository
 ```
