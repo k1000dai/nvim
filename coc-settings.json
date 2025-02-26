@@ -1,0 +1,5 @@
+{
+  "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd",
+  "html.autoCreateQuotes": false,
+  "inlayHint.enable": false
+}

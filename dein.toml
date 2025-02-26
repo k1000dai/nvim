@@ -1,0 +1,87 @@
+# [dein.toml]
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# coc
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+build = 'coc#util#install()'
+hook_add = '''
+source ~/.config/nvim/plugins/coc.vim
+'''
+
+# ファイルツリーを表示
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+depends = ['ryanoasis/vim-devicons']
+hook_add='''
+nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+autocmd BufEnter NERD_tree_* | execute 'normal R'
+autocmd FocusGained NERD_tree_* | execute 'normal R'
+'''
+
+#カギカッコ
+[[plugins]]
+repo ='cohama/lexima.vim'
+on_i = 1
+
+#rust
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+
+#copilot
+[[plugins]]
+repo = 'github/copilot.vim'
+
+#telescope の依存   
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+#telescope
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+hook_add = '''
+nnoremap <silent> <Leader>ff <cmd>Telescope find_files<CR>
+nnoremap <silent> <Leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <silent> <Leader>fb <cmd>Telescope buffers<CR>
+nnoremap <silent> <Leader>fh <cmd>Telescope help_tags<CR>
+'''
+
+#treesitter
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_post_update = 'TSUpdate'
+hook_add = '''
+'''
+
+# devicons
+[[plugins]]
+repo = 'nvim-tree/nvim-web-devicons'
+# gitsigns
+[[plugins]]
+repo = 'lewis6991/gitsigns.nvim'
+#barbar
+[[plugins]]
+repo = 'romgrk/barbar.nvim'
+hook_add = '''
+nnoremap <silent> <Leader>[ :BufferPrevious<CR>
+nnoremap <silent> <Leader>] :BufferNext<CR>
+nnoremap <silent> <Leader>q :BufferClose<CR>
+'''
+
+# === colorscheme ===
+# iceberg
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+#hook_add = '''
+#colorscheme iceberg
+#'''
+
+#everforest
+[[plugins]]
+repo = 'sainnhe/everforest'
+hook_add = '''
+colorscheme everforest
+'''
+
