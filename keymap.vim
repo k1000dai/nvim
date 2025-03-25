@@ -14,6 +14,10 @@ nmap <silent> <Esc><Esc> :nohlsearch<CR>
 nnoremap <silent> <Leader>v :vs<CR>
 " 画面をspace+sで横に分割する
 nnoremap <silent> <Leader>s :sp<CR>
+" space + +でウィンドウを拡大する
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+" space + -でウィンドウを縮小する
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
 " hjklの方向ににカーソルを移動させる
 nnoremap <silent> <Leader>h <C-w>h

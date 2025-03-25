@@ -17,7 +17,7 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = { "python","c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
     highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "vue", "ruby" },  -- list of language that will be disabled
+    disable = {},  -- list of language that will be disabled
   },
 }
 EOF
