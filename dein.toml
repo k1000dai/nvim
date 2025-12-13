@@ -65,8 +65,8 @@ repo = 'lewis6991/gitsigns.nvim'
 [[plugins]]
 repo = 'romgrk/barbar.nvim'
 hook_add = '''
-nnoremap <silent> <Leader>[ :BufferPrevious<CR>
-nnoremap <silent> <Leader>] :BufferNext<CR>
+nnoremap <silent> <Leader><S-Tab> :BufferPrevious<CR>
+nnoremap <silent> <Leader><Tab> :BufferNext<CR>
 nnoremap <silent> <Leader>q :BufferClose<CR>
 '''
 
