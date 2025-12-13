@@ -36,8 +36,5 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-" 補完
-" tabキーと shift+tabキーで補完候補を選択できる
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" 補完は nvim-cmp で設定 (lua/plugins.lua)
 
