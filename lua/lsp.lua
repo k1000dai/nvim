@@ -1,4 +1,4 @@
--- LSP Configuration
+-- LSP Configuration (Neovim 0.11+)
 
 -- Setup mason (LSP installer)
 require("mason").setup()
@@ -14,85 +14,83 @@ require("mason-lspconfig").setup({
   },
 })
 
--- LSP keymaps (set when LSP attaches to buffer)
-local on_attach = function(client, bufnr)
-  local opts = { noremap = true, silent = true, buffer = bufnr }
-
-  -- Hover (was <Leader>info)
-  vim.keymap.set("n", "<Leader>info", vim.lsp.buf.hover, opts)
-
-  -- Go to definition (was <Leader>df)
-  vim.keymap.set("n", "<Leader>df", vim.lsp.buf.definition, opts)
-
-  -- Format (was <space>fmt)
-  vim.keymap.set("n", "<Leader>fmt", function()
-    vim.lsp.buf.format({ async = true })
-  end, opts)
-
-  -- Quick fix / Code action (was <space>fx)
-  vim.keymap.set("n", "<Leader>fx", vim.lsp.buf.code_action, opts)
-
-  -- Additional useful LSP keymaps
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-end
-
 -- Capabilities for nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- Setup each LSP server
-local lspconfig = require("lspconfig")
+-- LSP keymaps (set when LSP attaches to buffer)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.buf
+    local opts = { noremap = true, silent = true, buffer = bufnr }
 
--- clangd (C/C++)
-lspconfig.clangd.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
+    -- Hover (was <Leader>info)
+    vim.keymap.set("n", "<Leader>info", vim.lsp.buf.hover, opts)
+
+    -- Go to definition (was <Leader>df)
+    vim.keymap.set("n", "<Leader>df", vim.lsp.buf.definition, opts)
+
+    -- Format (was <space>fmt)
+    vim.keymap.set("n", "<Leader>fmt", function()
+      vim.lsp.buf.format({ async = true })
+    end, opts)
+
+    -- Quick fix / Code action (was <space>fx)
+    vim.keymap.set("n", "<Leader>fx", vim.lsp.buf.code_action, opts)
+
+    -- Additional useful LSP keymaps
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+  end,
+})
+
+-- Configure LSP servers using vim.lsp.config (Neovim 0.11+)
+vim.lsp.config("clangd", {
   cmd = { "/opt/homebrew/opt/llvm/bin/clangd" },
-})
-
--- pyright (Python)
-lspconfig.pyright.setup({
-  on_attach = on_attach,
   capabilities = capabilities,
 })
 
--- ts_ls (TypeScript/JavaScript)
-lspconfig.ts_ls.setup({
-  on_attach = on_attach,
+vim.lsp.config("pyright", {
   capabilities = capabilities,
 })
 
--- html
-lspconfig.html.setup({
-  on_attach = on_attach,
+vim.lsp.config("ts_ls", {
   capabilities = capabilities,
 })
 
--- cssls (CSS)
-lspconfig.cssls.setup({
-  on_attach = on_attach,
+vim.lsp.config("html", {
   capabilities = capabilities,
 })
 
--- jsonls (JSON)
-lspconfig.jsonls.setup({
-  on_attach = on_attach,
+vim.lsp.config("cssls", {
   capabilities = capabilities,
 })
 
--- rust_analyzer
-lspconfig.rust_analyzer.setup({
-  on_attach = on_attach,
+vim.lsp.config("jsonls", {
   capabilities = capabilities,
 })
 
--- Diagnostic signs (similar to your CoC highlighting)
+vim.lsp.config("rust_analyzer", {
+  capabilities = capabilities,
+})
+
+-- Enable all configured LSP servers
+vim.lsp.enable({
+  "clangd",
+  "pyright",
+  "ts_ls",
+  "html",
+  "cssls",
+  "jsonls",
+  "rust_analyzer",
+})
+
+-- Diagnostic configuration
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
