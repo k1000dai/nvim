@@ -21,9 +21,14 @@ source ~/.bashrc
 ```
 git clone https://github.com/k1000dai/nvim ~/.config/nvim
 ```
-4. install dein.vim
+4. install plugins (lazy.nvim)
+lazy.nvim is bootstrapped automatically on first launch.
 ```
-git clone https://github.com/Shougo/dein.vim ~/.cache/dein/repos/github.com/Shougo/dein.vim
+nvim
+```
+Then run:
+```
+:Lazy sync
 ```
 5. install nodejs
 ```
