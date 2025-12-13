@@ -6,6 +6,8 @@ require("mason-lspconfig").setup({
   ensure_installed = {
     "clangd",
     "pyright",
+    "ty",
+    "ruff",
     "ts_ls",
     "html",
     "cssls",
@@ -59,6 +61,14 @@ vim.lsp.config("pyright", {
   capabilities = capabilities,
 })
 
+vim.lsp.config("ty", {
+  capabilities = capabilities,
+})
+
+vim.lsp.config("ruff", {
+  capabilities = capabilities,
+})
+
 vim.lsp.config("ts_ls", {
   capabilities = capabilities,
 })
@@ -83,6 +93,8 @@ vim.lsp.config("rust_analyzer", {
 vim.lsp.enable({
   "clangd",
   "pyright",
+  "ty",
+  "ruff",
   "ts_ls",
   "html",
   "cssls",
