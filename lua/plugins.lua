@@ -1,14 +1,13 @@
 return {
   -- Colorscheme
   {
-    "sainnhe/everforest",
+    "rhysd/vim-color-spring-night",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("everforest")
+      vim.cmd.colorscheme("spring-night")
     end,
   },
-  { "cocopon/iceberg.vim" },
 
   -- Core dependencies
   { "nvim-lua/plenary.nvim" },
