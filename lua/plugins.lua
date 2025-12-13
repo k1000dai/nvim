@@ -59,7 +59,7 @@ return {
   -- Copilot
   {
     "github/copilot.vim",
-    event = "InsertEnter",
+    lazy = false,
   },
 
   -- Telescope
@@ -154,6 +154,7 @@ return {
   -- Buffer/tab line
   {
     "romgrk/barbar.nvim",
+    lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
       { "<Leader><S-Tab>", ":BufferPrevious<CR>", silent = true },
