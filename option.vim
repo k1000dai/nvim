@@ -44,6 +44,20 @@ set nobackup " backupを保存しない
 set nowritebackup "writebackupを保存しない
 set viminfo= " viminfoファイルに保存しない
 
+" ######################## 外部変更の自動検知 ########################
+set autoread " 外部でファイルが変更されたら自動で読み込む
+set updatetime=1000 " CursorHoldイベントの発火を1秒後に（デフォルト4秒）
+
+augroup auto-checktime
+  autocmd!
+  " カーソル停止時にファイル変更をチェック
+  autocmd CursorHold,CursorHoldI * checktime
+  " Neovimにフォーカスが戻ったときにチェック
+  autocmd FocusGained * checktime
+  " バッファに入ったときにチェック
+  autocmd BufEnter * checktime
+augroup END
+
 " ######################## その他 ########################
 filetype plugin indent on " ファイルタイプの検索とプラグインをONにする
 set encoding=utf-8 " 文字コードをutf-8にする
