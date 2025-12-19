@@ -1,11 +1,12 @@
 return {
   -- Colorscheme
   {
-    "rhysd/vim-color-spring-night",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("spring-night")
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
